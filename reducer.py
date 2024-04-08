@@ -9,14 +9,14 @@ for line in stdin:
         index.setdefault(word, {})
 
         for posting in postings.split(','):
-                doc_id, count = posting.split(':')
+                file_id, count = posting.split(':')
                 count = int(count)
 
-                index[word].setdefault(doc_id, 0)
-                index[word][doc_id] += count
+                index[word].setdefault(file_id, 0)
+                index[word][file_id] += count
 
 for word in index:
-        postings_list = ["%s:%d" % (doc_id, index[word][doc_id])
-                         for doc_id in index[word]]
+        postings_list = ["%s:%d" % (doc_id, index[word][file_id])
+                         for file_id in index[word]]
 
         print((word, postings_list))
